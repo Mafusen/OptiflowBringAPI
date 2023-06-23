@@ -12,35 +12,15 @@
 -->
 
 <?php
-    function getPoststed($postnummer) {
-        $api_key = '595722eb-fa10-4261-bbdc-4da70f22e759';
-        $url = "https://api.bring.com/shippingguide/api/postalCode.json?clientUrl=dinurl.no&pnr={$postnummer}";
-    
-        $options = [
-            'http' => [
-                'header' => "X-MyBring-API-Uid: $api_key",
-                'method' => 'GET',
-            ],
-        ];
-    
-        $context = stream_context_create($options);
-        $result = file_get_contents($url, false, $context);
-    
-        if ($result === false) {
-            // Håndter feil her
-            return null;
-        }
-    
-        $data = json_decode($result, true);
-        $poststed = $data['result'];
-    
-        return $poststed;
-    }
-    
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $postnummer = $_POST['postnr'];
-        $poststed = getPoststed($postnummer);
-    }
+require 'bring_api.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $api_key = '9593f1da-be5a-4596-bbd5-a38121427e59';
+    $bringAPI = new BringAPI($api_key);
+
+    $postnummer = $_POST['postnr'];
+    $poststed = $bringAPI->getPoststed($postnummer);
+}
 ?>
 
 <!DOCTYPE html>
@@ -67,9 +47,6 @@
                 Applikasjon laget av: Marius Sørensen Bakken
             </p>
         </div>
-
-
-
     </body>
 </html>      
 
