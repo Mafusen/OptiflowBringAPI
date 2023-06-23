@@ -6,7 +6,7 @@
     Skjemaet skal inneholde et tekstfelt hvor brukeren kan taste inn et postnr. og få tilbake poststedet ved å gjøre et oppslag mot API'et til Posten/Bring.
     Bruk gjerne OOP i koden som angår utveksling av data mellom applikasjonen din og API'et.
 
-    Posten/Brings API: https://developer.bring.com/api/postal-code/
+    Posten/Brings API: https:/git/developer.bring.com/api/postal-code/
 
     Du må gjerne legge koden ut på Github når du er ferdig.
 -->
@@ -14,13 +14,6 @@
 <?php
 require 'bring_api.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $api_key = '9593f1da-be5a-4596-bbd5-a38121427e59';
-    $bringAPI = new BringAPI($api_key);
-
-    $postnummer = $_POST['postnr'];
-    $poststed = $bringAPI->getPoststed($postnummer);
-}
 ?>
 
 <!DOCTYPE html>
