@@ -40,7 +40,12 @@ include 'bring_api.php';
             </p>
         </div>
     </body>
-</html>      
+</html>    
+
+<!--
+Sjekker om $poststed-variabelen er satt og printer resultatet hvis ja. Og stopper prosessen hvis nei.
+Printer resultatet.
+-->
 
 <?php if (isset($poststed)):?>
     <div class="result">

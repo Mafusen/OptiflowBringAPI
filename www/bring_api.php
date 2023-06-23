@@ -1,12 +1,4 @@
 <?php
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $api_key = '9593f1da-be5a-4596-bbd5-a38121427e59';
-        $bringAPI = new BringAPI($api_key);
-
-        $postnummer = $_POST['postnr'];
-        $poststed = $bringAPI->getPoststed($postnummer);
-    }
-    
     //class for å koble til Bring sitt API
     class BringAPI {
         private $api_key;
@@ -42,4 +34,14 @@
             return $poststed;
         }
     }
+        //Setter tilkobling til API. Definerer API-nøkkel og lager en ny instans for tilkobling.
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $api_key = '9593f1da-be5a-4596-bbd5-a38121427e59';
+            $bringAPI = new BringAPI($api_key);
+    
+            //henter postnr fra brukerinntasting og lagrer i variabel
+            $postnummer = $_POST['postnr'];
+            //Kaller metoden fra klassen med nummeret som ble tastet inn. Lagrer dette i en variabel som kan vises til bruker eller i annen kode.
+            $poststed = $bringAPI->getPoststed($postnummer);
+        }
 ?>
