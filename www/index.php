@@ -12,8 +12,7 @@
 -->
 
 <?php
-require 'bring_api.php';
-
+include 'bring_api.php';
 ?>
 
 <!DOCTYPE html>
